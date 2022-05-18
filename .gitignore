@@ -1,0 +1,5 @@
+build
+dist
+httpd_pyparser.egg-info/
+__pycache__
+.idea/
