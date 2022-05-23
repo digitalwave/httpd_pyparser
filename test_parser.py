@@ -9,7 +9,7 @@ import simplejson
 import argparse
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Komplex tétel XLS betöltés")
+    parser = argparse.ArgumentParser(description="A HTTPD config parser example")
     parser.add_argument("-t", "--httpdtype", dest="httpdtype", metavar='Type of HTTPD', type=str,
                             help='Type of HTTPD, could be apache or nginx', required=True)
     parser.add_argument("-c", "--config", dest="config", metavar='/path/to/config.conf', type=str,
