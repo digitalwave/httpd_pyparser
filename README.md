@@ -43,7 +43,7 @@ Both main submodules have three classes:
 
 ## Module version
 
-Before you start to work with any classplease check the version to make sure you have the current one (`0.1`):
+Before you start to work with any classplease check the version to make sure you have the current one (`0.2`):
 
 ```python
 $ python3
@@ -52,11 +52,11 @@ $ python3
 >>> import httpd_pyparser.apache
 >>> import httpd_pyparser.nginx
 >>> httpd_pyparser.__version__
-'0.1'
+'0.2'
 >>> httpd_pyparser.apache.__version__
-'0.1'
+'0.2'
 >>> httpd_pyparser.nginx.__version__
-'0.1'
+'0.2'
 
 ```
 Lexer classes

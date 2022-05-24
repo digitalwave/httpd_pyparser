@@ -139,6 +139,7 @@ class Parser(object):
         self.configlines = []
         self.current = self.configlines
         self._stack = [self.configlines]
+        self.quoted = 'no_quote'
 
     def p_config_directive(self, p):
         """config_lines : comment
@@ -191,19 +192,32 @@ class Parser(object):
         self.current.append({'type': 'directive_tag_close', 'value': p[1].strip("<").strip(">").lstrip("/"), 'lineno': p.lineno(1), 'arguments': [], 'blocks': []})
 
     def p_config_directive_argument_list(self, p):
-        """config_directive_argument_list : config_directive_argument_token
-                                          | config_directive_argument_token_quoted
-                                          | config_directive_argument_list config_directive_argument_token
-                                          | config_directive_argument_list config_directive_argument_token_quoted"""
+        """config_directive_argument_list : config_directive_argument_not_quoted_list
+                                          | config_directive_argument_quoted_list
+                                          | config_directive_argument_list config_directive_argument_not_quoted_list
+                                          | config_directive_argument_list config_directive_argument_quoted_list"""
+        pass
+
+    def p_config_directive_argument_quoted_list(self, p):
+        """config_directive_argument_quoted_list : config_directive_quoted_token config_directive_argument_not_quoted_list config_directive_quoted_token"""
+        pass
+
+    def p_config_directive_argument_not_quoted_list(self, p):
+        """config_directive_argument_not_quoted_list : config_directive_argument_token
+                                                     | config_directive_argument_not_quoted_list config_directive_argument_token"""
+        pass
+
+    def p_config_directive_quote(self, p):
+        """config_directive_quoted_token : T_QUOTE_DOUBLE"""
+        if self.quoted == 'no_quote':
+            self.quoted = 'quoted'
+        elif self.quoted == 'quoted':
+            self.quoted = 'no_quote'
         pass
 
     def p_config_directive_argument_token(self, p):
         """config_directive_argument_token : T_CONFIG_DIRECTIVE_ARGUMENT"""
-        self.current[-1]['arguments'].append({'value': p[1], 'lineno': p.lineno(1), 'quote_type': 'no_quote'})
-
-    def p_config_directive_argument_token_quoted(self, p):
-        """config_directive_argument_token_quoted : T_QUOTE_DOUBLE T_CONFIG_DIRECTIVE_ARGUMENT T_QUOTE_DOUBLE"""
-        self.current[-1]['arguments'].append({'value': p[2], 'lineno': p.lineno(1), 'quote_type': 'quoted'})
+        self.current[-1]['arguments'].append({'value': p[1], 'lineno': p.lineno(1), 'quote_type': self.quoted})
 
     # handling parser error
     def p_error(self, p):
