@@ -15,8 +15,8 @@ Therefore, you can make many transformations on the structured data, and can
 write back the modified config.
 """,
             python_requires=">=3",
-            license="""GPLv3""",
-            version = "0.2",
+            license="""AGPLv3""",
+            version = "0.3",
             author = "Ervin Hegedus",
             author_email = "airween@digitalwave.hu",
             maintainer = "Ervin Hegedus",

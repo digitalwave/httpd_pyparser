@@ -1,10 +1,21 @@
-[![License](https://img.shields.io/badge/License-GPLv3-green.svg)](https://pypi.python.org/pypi/msc-pyparser)
+[![License](https://img.shields.io/badge/License-AGPL-green.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Latest Version](https://img.shields.io/pypi/v/httpd-pyparser.svg)](https://pypi.python.org/pypi/httpd-pyparser)
 
 # httpd_pyparser
 
 Welcome to the `httpd_pyparser` documentation.
 
 The parser runs under Python 3.7+ on Linux, Windows and Mac.
+
+Licensing
+=========
+
+**httpd_pyparser** is dual licensed under the following licenses. You can use the software according to the terms of your chosen license.
+
+* [GNU Affero General Public License (AGPL) v3 with additional terms](https://www.gnu.org/licenses/agpl-3.0.html)
+* Our Own Proprietary License - please contact with us
+
+This means, we can apply any pull requests from any contributor after the agreement of our CLA. For mor information, please check our [contrbuting reference](CONTRIBUTING.md)
 
 Installation
 ============
@@ -43,7 +54,7 @@ Both main submodules have three classes:
 
 ## Module version
 
-Before you start to work with any classplease check the version to make sure you have the current one (`0.2`):
+Before you start to work with any classplease check the version to make sure you have the current one (`0.3`):
 
 ```python
 $ python3
@@ -52,11 +63,11 @@ $ python3
 >>> import httpd_pyparser.apache
 >>> import httpd_pyparser.nginx
 >>> httpd_pyparser.__version__
-'0.2'
+'0.3'
 >>> httpd_pyparser.apache.__version__
-'0.2'
+'0.3'
 >>> httpd_pyparser.nginx.__version__
-'0.2'
+'0.3'
 
 ```
 Lexer classes
@@ -68,7 +79,7 @@ Here is a simple example:
 
 ```python
 $ python3
-ython 3.9.2 (default, Feb 28 2021, 17:03:44) 
+Python 3.9.2 (default, Feb 28 2021, 17:03:44) 
 [GCC 10.2.1 20210110] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import httpd_pyparser

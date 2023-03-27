@@ -1,4 +1,10 @@
-v0.2 - YYYY-MM-DD
+v0.3 - 2023-03-27
+-----------------
+  * small apache.py modification
+  * remove length of arguments check
+  * change license type (new: AGPL)
+
+v0.2 - 2022-05-24
 -----------------
   * added PIP related files
   * fix Apache errors

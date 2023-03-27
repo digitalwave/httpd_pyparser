@@ -4,7 +4,7 @@ import ply.yacc
 import re
 import os
 
-__version__ = "0.1"
+__version__ = "0.3"
 
 class Lexer(object):
     """Lexer class"""
@@ -49,20 +49,8 @@ class Lexer(object):
 
     def t_ANY_newline(self, t):
         r'\n|\r\n'
-        if self.st_continue == 0:
-            t.lexer.begin('INITIAL')
-        else:
-            self.st_continue = 0
-        t.lexer.lineno += 1
-
-    # hack for 'unterminated' lines, eg:
-    # ServerRoot /foo/bar \
-    # <EMPTY>
-    def t_ANY_T_BACKSLASH_AND_NEWLINE(self, t):
-        r'\\[ \t]*(\r|\n)(\r|\n)'
-        self.st_continue = 0
         t.lexer.begin('INITIAL')
-        self.st_action_quote = 0
+        self.st_continue = 0
         t.lexer.lineno += 1
 
     def t_ANY_T_BACKSLASH(self, t):
@@ -275,7 +263,8 @@ class Writer(object):
                         self.output.append("%s%s" % (self.indentstr*(self.depth), " ".join(self.currline)))
                         self.currline = []
                         self.lineno = a['lineno']
-                        eindent = len(self.indentstr*(self.depth) + i['value'] + " " + i['arguments'][0]['value'] + " ")
+                        #eindent = self.indentstr*(self.depth) + i['value'] + " " + i['arguments'][0]['value'] + " "
+                        eindent = self.indentstr*(self.depth)
                     self.currline.append("%s%s%s%s" % (eindent, self.quote_types[a['quote_type']], a['value'], self.quote_types[a['quote_type']]))
             elif i['type'].lower() == "directive_tag":
                 val = [i['value']]
