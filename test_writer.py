@@ -9,11 +9,6 @@ import argparse
 import httpd_pyparser.apache
 import httpd_pyparser.nginx
 
-if len(sys.argv) < 3:
-    print("Argument missing!")
-    print("Use: %s HTTPDTYPE /path/to/parsed_struct.file" % (sys.argv[0]))
-    sys.exit(-1)
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A HTTPD config writer example")
     parser.add_argument("-t", "--httpdtype", dest="httpdtype", metavar='Type of HTTPD', type=str,
